@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicoestimulantes y NO Estimulantes para el TDAH</title>
+    <style>
+        /* ===== RESET Y BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 0.875rem + 0.2vw, 1rem);
+            min-height: 100vh;
+        }
+
+        /* ===== ENCABEZADO PRINCIPAL ===== */
+        .main-header {
+            background: linear-gradient(135deg, #0f766e 0%, #1e3a8a 50%, #0e7490 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 1.5rem);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .main-header h1 {
+            font-size: clamp(1.5rem, 2.2rem + 1vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+
+        .main-header p.subtitle {
+            font-size: clamp(0.92rem, 0.875rem + 0.4vw, 1.2rem);
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem) clamp(2.5rem, 5vw, 4rem);
+        }
+
+        /* ===== SECCIONES DE MEDICAMENTOS ===== */
+        .medication-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.2rem, 1.5rem + 0.6vw, 1.95rem);
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header .section-tag {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.75;
+            margin-top: 0.15rem;
+        }
+
+        /* ===== GRID DE TARJETAS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        /* ===== TARJETA BASE ===== */
+        .card {
+            background-color: #ffffff;
+            border-radius: 14px;
+            padding: 1.5rem 1.6rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            font-size: clamp(1rem, 0.9rem + 0.3vw, 1.18rem);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 .card-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .card p,
+        .card li {
+            font-size: clamp(0.85rem, 0.825rem + 0.15vw, 0.96rem);
+            color: #374151;
+            margin-bottom: 0.4rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .card strong {
+            font-weight: 600;
+        }
+
+        .card .highlight-box {
+            margin-top: 0.8rem;
+            padding: 0.7rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-style: italic;
+        }
+
+        /* ===== METILFENIDATO - TONOS VERDE AZULADO (TEAL) ===== */
+        .metilfenidato .section-header {
+            border-bottom-color: #14b8a6;
+        }
+        .metilfenidato .section-icon {
+            background: linear-gradient(135deg, #0d9488, #14b8a6);
+        }
+        .metilfenidato .section-header h2 {
+            color: #0f766e;
+        }
+        .metilfenidato .card {
+            border-left-color: #14b8a6;
+        }
+        .metilfenidato .card h3 {
+            color: #0f766e;
+        }
+        .metilfenidato .card h3 .card-number {
+            background-color: #14b8a6;
+        }
+        .metilfenidato .card ul li::before {
+            color: #14b8a6;
+        }
+        .metilfenidato .highlight-box {
+            background-color: #f0fdfa;
+            border-left: 3px solid #14b8a6;
+            color: #115e59;
+        }
+
+        /* ===== LISDEXANFETAMINA - TONOS ROSA/ROJIZO CON ESTILO PIZARRA ===== */
+        .lisdexanfetamina .section-header {
+            border-bottom-color: #ec4899;
+        }
+        .lisdexanfetamina .section-icon {
+            background: linear-gradient(135deg, #be185d, #ec4899);
+        }
+        .lisdexanfetamina .section-header h2 {
+            color: #be185d;
+        }
+        .lisdexanfetamina .card {
+            background-color: #1f2937;
+            color: #f3f4f6;
+            border: 2px solid #000000;
+            border-left: 5px solid #ec4899;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        }
+        .lisdexanfetamina .card h3 {
+            color: #f9a8d4;
+        }
+        .lisdexanfetamina .card h3 .card-number {
+            background-color: #db2777;
+            color: #fff;
+        }
+        .lisdexanfetamina .card p,
+        .lisdexanfetamina .card li {
+            color: #e5e7eb;
+        }
+        .lisdexanfetamina .card ul li::before {
+            color: #f9a8d4;
+        }
+        .lisdexanfetamina .highlight-box {
+            background-color: #374151;
+            border-left: 3px solid #ec4899;
+            color: #f9a8d4;
+        }
+        .lisdexanfetamina .card strong {
+            color: #fbcfe8;
+        }
+
+        /* ===== DEXMETILFENIDATO - TONOS NARANJA/BEIGE ===== */
+        .dexmetilfenidato .section-header {
+            border-bottom-color: #f97316;
+        }
+        .dexmetilfenidato .section-icon {
+            background: linear-gradient(135deg, #c2410c, #f97316);
+        }
+        .dexmetilfenidato .section-header h2 {
+            color: #c2410c;
+        }
+        .dexmetilfenidato .card {
+            border-left-color: #f97316;
+            background-color: #fffbeb;
+        }
+        .dexmetilfenidato .card h3 {
+            color: #c2410c;
+        }
+        .dexmetilfenidato .card h3 .card-number {
+            background-color: #f97316;
+        }
+        .dexmetilfenidato .card ul li::before {
+            color: #f97316;
+        }
+        .dexmetilfenidato .card p,
+        .dexmetilfenidato .card li {
+            color: #7c2d12;
+        }
+        .dexmetilfenidato .highlight-box {
+            background-color: #ffedd5;
+            border-left: 3px solid #f97316;
+            color: #9a3412;
+        }
+
+        /* ===== ATOMOXETINA - TONOS AZUL VERDOSO ===== */
+        .atomoxetina .section-header {
+            border-bottom-color: #0891b2;
+        }
+        .atomoxetina .section-icon {
+            background: linear-gradient(135deg, #0e7490, #0891b2);
+        }
+        .atomoxetina .section-header h2 {
+            color: #0e7490;
+        }
+        .atomoxetina .card {
+            border-left-color: #0891b2;
+            background-color: #f0f9ff;
+        }
+        .atomoxetina .card h3 {
+            color: #0e7490;
+        }
+        .atomoxetina .card h3 .card-number {
+            background-color: #0891b2;
+        }
+        .atomoxetina .card ul li::before {
+            color: #0891b2;
+        }
+        .atomoxetina .card p,
+        .atomoxetina .card li {
+            color: #164e63;
+        }
+        .atomoxetina .highlight-box {
+            background-color: #cffafe;
+            border-left: 3px solid #0891b2;
+            color: #155e75;
+        }
+
+        /* ===== TARJETA DE ALERTA (estilo especial para alertas clínicas) ===== */
+        .card.alert-card {
+            background-color: #fef2f2;
+            border-left-color: #dc2626;
+            border-left-width: 6px;
+        }
+        .card.alert-card h3 {
+            color: #b91c1c;
+        }
+        .card.alert-card h3 .card-number {
+            background-color: #dc2626;
+        }
+        .card.alert-card ul li::before {
+            color: #dc2626;
+            content: '⚠';
+            font-size: 0.85rem;
+        }
+        .card.alert-card p,
+        .card.alert-card li {
+            color: #7f1d1d;
+        }
+
+        /* Mantener el estilo pizarra en alertas de lisdexanfetamina */
+        .lisdexanfetamina .card.alert-card {
+            background-color: #2d1b1b;
+            border-left-color: #ef4444;
+            border-left-width: 6px;
+        }
+        .lisdexanfetamina .card.alert-card h3 {
+            color: #fca5a5;
+        }
+        .lisdexanfetamina .card.alert-card h3 .card-number {
+            background-color: #dc2626;
+        }
+        .lisdexanfetamina .card.alert-card p,
+        .lisdexanfetamina .card.alert-card li {
+            color: #fecaca;
+        }
+        .lisdexanfetamina .card.alert-card ul li::before {
+            color: #fca5a5;
+        }
+
+        /* ===== FOOTER INFORMATIVO ===== */
+        .info-footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background-color: #1f2937;
+            color: #d1d5db;
+            font-size: 0.88rem;
+            border-top: 4px solid #0d9488;
+        }
+        .info-footer p {
+            max-width: 800px;
+            margin: 0 auto 0.5rem;
+        }
+        .info-footer strong {
+            color: #5eead4;
+        }
+
+        /* ===== NAVEGACIÓN STICKY ===== */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border-bottom: 3px solid #0d9488;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #0d9488 transparent;
+        }
+        .sticky-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+        .sticky-nav::-webkit-scrollbar-thumb {
+            background: #0d9488;
+            border-radius: 3px;
+        }
+        .sticky-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 0.3rem;
+            list-style: none;
+            padding: 0.6rem 1rem;
+            margin: 0 auto;
+            max-width: 1280px;
+            min-width: max-content;
+        }
+        .sticky-nav li {
+            flex-shrink: 0;
+        }
+        .sticky-nav a {
+            display: inline-block;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #374151;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .sticky-nav a:hover,
+        .sticky-nav a:focus {
+            background-color: #f0fdfa;
+            color: #0f766e;
+        }
+        .sticky-nav .nav-pill-m {
+            border-left: 3px solid #14b8a6;
+        }
+        .sticky-nav .nav-pill-l {
+            border-left: 3px solid #ec4899;
+        }
+        .sticky-nav .nav-pill-d {
+            border-left: 3px solid #f97316;
+        }
+        .sticky-nav .nav-pill-a {
+            border-left: 3px solid #0891b2;
+        }
+
+        /* ===== IMÁGENES HERO Y BANNERS ===== */
+        .hero-image-container {
+            margin: clamp(1rem, 3vw, 1.5rem) auto 0;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            max-width: 640px;
+            width: 100%;
+        }
+        .hero-image-container img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 7;
+            height: auto;
+            object-fit: cover;
+        }
+        .hero-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            padding: 1.5rem 1.2rem 0.7rem;
+            font-size: 0.82rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .section-banner {
+            margin-bottom: 1.8rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+        .section-banner img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 5;
+            height: auto;
+            object-fit: cover;
+        }
+        .section-banner .banner-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            padding: 1.4rem 1.2rem 0.7rem;
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+
+        /* Filtro especial para banner oscuro de lisdexanfetamina */
+        .lisdexanfetamina .section-banner {
+            border: 2px solid #000000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .lisdexanfetamina .section-banner img {
+            filter: brightness(0.7) saturate(1.2) hue-rotate(280deg);
+        }
+        .lisdexanfetamina .banner-caption {
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: #f9a8d4;
+        }
+
+        /* Imagen dentro de tarjeta */
+        .card-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            margin-bottom: 0.4rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-image-caption {
+            font-size: 0.78rem;
+            font-style: italic;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 0.6rem;
+        }
+        .lisdexanfetamina .card-image {
+            filter: brightness(0.85) saturate(1.1);
+            border: 1px solid #000;
+        }
+        .lisdexanfetamina .card-image-caption {
+            color: #9ca3af;
+        }
+
+        /* ===== RESPONSIVE: LAPTOP / TABLET GRANDE (≤1024px) ===== */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+            }
+            .sticky-nav ul {
+                justify-content: flex-start;
+                gap: 0.25rem;
+            }
+        }
+
+        /* ===== RESPONSIVE: TABLET (≤768px) ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .section-header {
+                gap: 0.7rem;
+            }
+            .section-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1.3rem;
+                border-radius: 10px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.3rem 1.4rem;
+            }
+            .sticky-nav a {
+                font-size: 0.82rem;
+                padding: 0.45rem 0.8rem;
+            }
+        }
+
+        /* ===== RESPONSIVE: MÓVIL MEDIO (≤640px) ===== */
+        @media (max-width: 640px) {
+            .main-header {
+                padding: 2rem 1rem;
+            }
+            .section-banner img {
+                aspect-ratio: 16 / 6;
+            }
+            .section-banner .banner-caption {
+                padding: 1.2rem 1rem 0.6rem;
+            }
+        }
+
+        /* ===== RESPONSIVE: MÓVIL PEQUEÑO (≤480px) ===== */
+        @media (max-width: 480px) {
+            .main-header {
+                padding: 1.8rem 0.9rem;
+            }
+            .header-badge {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.8rem;
+            }
+            .section-header {
+                flex-wrap: wrap;
+            }
+            .section-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+            .card {
+                padding: 1.1rem 1.2rem;
+            }
+            .card h3 .card-number {
+                width: 22px;
+                height: 22px;
+                font-size: 0.72rem;
+            }
+            .sticky-nav ul {
+                padding: 0.5rem 0.7rem;
+            }
+            .sticky-nav a {
+                font-size: 0.78rem;
+                padding: 0.4rem 0.7rem;
+            }
+            .info-footer {
+                padding: 1.5rem 1.2rem;
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ===== RESPONSIVE: MÓVIL MUY PEQUEÑO (≤360px) ===== */
+        @media (max-width: 360px) {
+            .main-header h1 {
+                font-size: 1.3rem;
+            }
+            .section-banner .banner-caption,
+            .hero-caption {
+                font-size: 0.75rem;
+                padding: 1rem 0.7rem 0.5rem;
+            }
+        }
+
+        /* ===== ACCESIBILIDAD: reduce motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .card {
+                transition: none;
+            }
+            .card:hover {
+                transform: none;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ENCABEZADO PRINCIPAL ===== -->
+    <header class="main-header">
+        <span class="header-badge">Guía Clínica · Farmacología</span>
+        <h1>Psicoestimulantes y NO Estimulantes para el TDAH</h1>
+        <p class="subtitle">Guía de farmacología clínica y psicoeducación</p>
+        <div class="hero-image-container">
+            <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1fb3b92ee1ba.jpg" alt="Ilustración médica del cerebro humano con neurotransmisores" loading="lazy">
+            <div class="hero-caption">El cerebro y los neurotransmisores: base neurobiológica del TDAH</div>
+        </div>
+    </header>
+
+    <!-- ===== NAVEGACIÓN STICKY ===== -->
+    <nav class="sticky-nav" aria-label="Navegación de medicamentos">
+        <ul>
+            <li><a href="#metilfenidato" class="nav-pill-m">🧪 Metilfenidato</a></li>
+            <li><a href="#lisdexanfetamina" class="nav-pill-l">💊 Lisdexanfetamina</a></li>
+            <li><a href="#dexmetilfenidato" class="nav-pill-d">⬢ Dexmetilfenidato</a></li>
+            <li><a href="#atomoxetina" class="nav-pill-a">🧬 Atomoxetina</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- =====================================================
+             SECCIÓN 1: METILFENIDATO
+             ===================================================== -->
+        <section class="medication-section metilfenidato" id="metilfenidato">
+            <div class="section-header">
+                <div class="section-icon">M</div>
+                <div>
+                    <h2>METILFENIDATO</h2>
+                    <span class="section-tag">Psicoestimulante · Derivado de piperidina</span>
+                </div>
+            </div>
+
+            <div class="section-banner">
+                <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2fabe56b9d65.jpg" alt="Pastillas y cápsulas farmacéuticas" loading="lazy">
+                <div class="banner-caption">Formulaciones farmacéuticas: liberación inmediata y prolongada</div>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <article class="card">
+                    <h3><span class="card-number">1</span> Datos Generales</h3>
+                    <ul>
+                        <li><strong>Tipo:</strong> psicoestimulante derivado de piperidina.</li>
+                        <li><strong>Nombres comerciales:</strong> Consiv, Genéricos.</li>
+                        <li><strong>Ritalina</strong> de liberación inmediata.</li>
+                        <li><strong>Venta:</strong> bajo receta médica.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 2 -->
+                <article class="card">
+                    <h3><span class="card-number">2</span> Mecanismo de Acción</h3>
+                    <p>Inhibe la recaptación de <strong>dopamina</strong> y <strong>noradrenalina</strong> en la corteza prefrontal y vías relacionadas.</p>
+                    <p>Aumenta la disponibilidad sináptica, mejorando la <strong>atención</strong> y la <strong>regulación de impulsos</strong>.</p>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="card">
+                    <h3><span class="card-number">3</span> Indicaciones Principales en Salud Mental</h3>
+                    <ul>
+                        <li>TDAH en niños <strong>&gt;6 años</strong> hasta adultos.</li>
+                        <li>Tratamiento <strong>multimodal</strong>:
+                            <ul style="margin-top:0.4rem; padding-left:0.5rem;">
+                                <li>Psicoeducación.</li>
+                                <li>Terapia conductual / cognitiva.</li>
+                                <li>Apoyo escolar y familiar.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 4 -->
+                <article class="card">
+                    <h3><span class="card-number">4</span> Cinética Clínica</h3>
+                    <ul>
+                        <li><strong>1. Liberación inmediata:</strong> inicio 30–60 min, duración 3–5 h, vida media 2–4 h.</li>
+                        <li><strong>2. Liberación prolongada:</strong> inicio 1 h, duración hasta 10–12 h.</li>
+                        <li><strong>3. Relevancia:</strong> olvidos de tomas.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 5 -->
+                <article class="card">
+                    <h3><span class="card-number">5</span> Efectos Secundarios</h3>
+                    <ul>
+                        <li>Activación / insomnio.</li>
+                        <li>Disminución del apetito.</li>
+                        <li>Pérdida de peso.</li>
+                        <li>Irritabilidad.</li>
+                        <li>Rebote emocional al final del efecto.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 6 -->
+                <article class="card alert-card">
+                    <h3><span class="card-number">6</span> Alertas Clínicas</h3>
+                    <ul>
+                        <li>Taquicardia e hipertensión.</li>
+                        <li>Dolor torácico.</li>
+                        <li>Agitación e ideación suicida.</li>
+                        <li>Síntomas psicóticos.</li>
+                        <li>Reacciones alérgicas.</li>
+                    </ul>
+                    <div class="highlight-box">No suspender de golpe.</div>
+                </article>
+
+                <!-- Tarjeta 7 -->
+                <article class="card">
+                    <h3><span class="card-number">7</span> Tratamiento Psicológico Adecuado</h3>
+                    <p>Combinar siempre con:</p>
+                    <ul>
+                        <li>Psicoeducación.</li>
+                        <li>Terapia.</li>
+                        <li>Entrenamiento en habilidades parentales.</li>
+                        <li>Rutinas estructuradas.</li>
+                    </ul>
+                    <img class="card-image" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0e6037a67e5c.jpg" alt="Sesión de terapia con niño" loading="lazy">
+                    <p class="card-image-caption">El tratamiento multimodal combina farmacología y psicoterapia</p>
+                </article>
+
+                <!-- Tarjeta 8 -->
+                <article class="card">
+                    <h3><span class="card-number">8</span> Psicoeducación Ampliada</h3>
+                    <p><strong>Mitos a desarmar:</strong></p>
+                    <ul>
+                        <li>"Es solo para hiperactivos".</li>
+                        <li>"Crea adicción".</li>
+                    </ul>
+                    <p style="margin-top:0.6rem;"><strong>Respuesta terapéutica:</strong> No es droga de abuso.</p>
+                    <p><strong>Adherencia:</strong> Tomar a la hora indicada, no suspender abruptamente, monitorear apetito y sueño.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SECCIÓN 2: LISDEXANFETAMINA
+             ===================================================== -->
+        <section class="medication-section lisdexanfetamina" id="lisdexanfetamina">
+            <div class="section-header">
+                <div class="section-icon">L</div>
+                <div>
+                    <h2>LISDEXANFETAMINA</h2>
+                    <span class="section-tag">Psicoestimulante · Profármaco de dextroanfetamina</span>
+                </div>
+            </div>
+
+            <div class="section-banner">
+                <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/99b27500aedf.jpg" alt="Sinapsis neuronal con neurotransmisores" loading="lazy">
+                <div class="banner-caption">Profármaco que libera dopamina y noradrenalina de forma gradual</div>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <article class="card">
+                    <h3><span class="card-number">1</span> Datos Generales</h3>
+                    <ul>
+                        <li><strong>Tipo:</strong> psicoestimulante profármaco de dextroanfetamina.</li>
+                        <li><strong>Nombres comerciales:</strong> Samexid, Ludoxa.</li>
+                        <li><strong>Receta obligatoria.</strong></li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 2 -->
+                <article class="card">
+                    <h3><span class="card-number">2</span> Mecanismo de Acción</h3>
+                    <p>Profármaco <strong>inactivo</strong> que se convierte gradualmente en dextroanfetamina.</p>
+                    <p>Aumenta la <strong>liberación</strong> y bloquea la <strong>recaptación</strong> de dopamina y noradrenalina.</p>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="card">
+                    <h3><span class="card-number">3</span> Cinética Clínica Relevante</h3>
+                    <ul>
+                        <li><strong>Inicio:</strong> 1–2 h.</li>
+                        <li><strong>Duración:</strong> 12–14 h.</li>
+                        <li><strong>Vida media:</strong> 9–11 h.</li>
+                    </ul>
+                    <div class="highlight-box">Ideal para cobertura diurna con una sola toma matutina.</div>
+                </article>
+
+                <!-- Tarjeta 4 -->
+                <article class="card">
+                    <h3><span class="card-number">4</span> Indicaciones Principales</h3>
+                    <ul>
+                        <li>TDAH en niños <strong>&gt;6 años</strong>, adolescentes y adultos.</li>
+                        <li>Trastorno por atracón.</li>
+                        <li><strong>Primera línea</strong> en algoritmos latinoamericanos.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 5 -->
+                <article class="card">
+                    <h3><span class="card-number">5</span> Efectos Secundarios</h3>
+                    <ul>
+                        <li>Disminución de apetito / peso.</li>
+                        <li>Insomnio.</li>
+                        <li>Sequedad de boca.</li>
+                        <li>Irritabilidad y ansiedad.</li>
+                        <li>Taquicardia / hipertensión.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 6 -->
+                <article class="card alert-card">
+                    <h3><span class="card-number">6</span> Alertas Clínicas</h3>
+                    <ul>
+                        <li>Síntomas cardiovasculares.</li>
+                        <li>Psicosis, manía, ideación suicida.</li>
+                        <li>Reacciones alérgicas graves.</li>
+                        <li>Priapismo.</li>
+                        <li>Tics severos.</li>
+                    </ul>
+                    <div class="highlight-box">Alto potencial de abuso.</div>
+                </article>
+
+                <!-- Tarjeta 7 -->
+                <article class="card">
+                    <h3><span class="card-number">7</span> Pautas de Psicoeducación</h3>
+                    <ul>
+                        <li><strong>"No es anfetamina de calle"</strong>.</li>
+                        <li>No abrir la cápsula.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SECCIÓN 3: DEXMETILFENIDATO
+             ===================================================== -->
+        <section class="medication-section dexmetilfenidato" id="dexmetilfenidato">
+            <div class="section-header">
+                <div class="section-icon">D</div>
+                <div>
+                    <h2>DEXMETILFENIDATO</h2>
+                    <span class="section-tag">Psicoestimulante · Isómero activo del metilfenidato</span>
+                </div>
+            </div>
+
+            <div class="section-banner">
+                <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5ba224ebdbbb.jpg" alt="Cápsulas farmacéuticas de liberación prolongada" loading="lazy">
+                <div class="banner-caption">Formulaciones de liberación inmediata y prolongada (XR)</div>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <article class="card">
+                    <h3><span class="card-number">1</span> Datos Generales</h3>
+                    <ul>
+                        <li><strong>Tipo:</strong> psicoestimulante.</li>
+                        <li><strong>Nombres:</strong> Focalin, Focalin XR.</li>
+                        <li>En Bolivia: muy limitada o inexistente.</li>
+                        <li>Se usa metilfenidato racémico.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 2 -->
+                <article class="card">
+                    <h3><span class="card-number">2</span> Mecanismo</h3>
+                    <p>Inhibe la recaptación de <strong>dopamina</strong> y <strong>noradrenalina</strong>.</p>
+                    <div class="highlight-box">Efecto más cognitivo que euforizante a dosis terapéuticas.</div>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="card">
+                    <h3><span class="card-number">3</span> Indicaciones</h3>
+                    <ul>
+                        <li>TDA.</li>
+                        <li>Narcolepsia.</li>
+                        <li><strong>Evidencia sólida</strong> de primera línea.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 4 -->
+                <article class="card">
+                    <h3><span class="card-number">4</span> Cinética Clínica</h3>
+                    <ul>
+                        <li><strong>Liberación inmediata:</strong> inicio 30–60 min, duración 3–5 h.</li>
+                        <li><strong>Liberación prolongada:</strong> inicio 1 h, duración 10–12 h.</li>
+                    </ul>
+                    <div class="highlight-box">Relevancia: permite dosis única matutina.</div>
+                </article>
+
+                <!-- Tarjeta 5 -->
+                <article class="card alert-card">
+                    <h3><span class="card-number">5</span> Efectos Secundarios y Alertas</h3>
+                    <ul>
+                        <li>Insomnio, bajo apetito, irritabilidad.</li>
+                        <li>Cefalea, taquicardia.</li>
+                        <li>Ideación suicida, tics, priapismo.</li>
+                    </ul>
+                    <div class="highlight-box">No suspender de golpe.</div>
+                </article>
+
+                <!-- Tarjeta 6 -->
+                <article class="card">
+                    <h3><span class="card-number">6</span> Psicoeducación</h3>
+                    <ul>
+                        <li><strong>"No es anfetamina de calle"</strong>.</li>
+                        <li>No abrir ni masticar la cápsula.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SECCIÓN 4: ATOMOXETINA (NO ESTIMULANTE)
+             ===================================================== -->
+        <section class="medication-section atomoxetina" id="atomoxetina">
+            <div class="section-header">
+                <div class="section-icon">A</div>
+                <div>
+                    <h2>ATOMOXETINA (NO ESTIMULANTE)</h2>
+                    <span class="section-tag">Inhibidor selectivo de noradrenalina · Sin potencial de abuso</span>
+                </div>
+            </div>
+
+            <div class="section-banner">
+                <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/03d99bb64fa4.jpg" alt="Ilustración médica del cerebro y sistema nervioso" loading="lazy">
+                <div class="banner-caption">Bloqueo selectivo del transportador de noradrenalina (NET)</div>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <article class="card">
+                    <h3><span class="card-number">1</span> Datos Generales</h3>
+                    <ul>
+                        <li><strong>Tipo:</strong> no estimulante, inhibidor selectivo de noradrenalina.</li>
+                        <li><strong>Nombres:</strong> Strattera, Deaten.</li>
+                        <li>Disponibilidad variable.</li>
+                        <li>Útil cuando no se pueden usar estimulantes o hay <strong>ansiedad / tics</strong>.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 2 -->
+                <article class="card">
+                    <h3><span class="card-number">2</span> Mecanismo de Acción</h3>
+                    <p>Bloquea el transportador de noradrenalina <strong>(NET)</strong>, aumentando noradrenalina y dopamina prefrontal.</p>
+                    <div class="highlight-box">Sin potencial de abuso.</div>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="card">
+                    <h3><span class="card-number">3</span> Indicaciones Principales</h3>
+                    <ul>
+                        <li>TDAH en niños <strong>&gt;6 años</strong>, adolescentes y adultos.</li>
+                        <li>Especialmente útil si hay contraindicación a estimulantes.</li>
+                        <li>Comorbilidad con <strong>ansiedad</strong> o <strong>tics</strong>.</li>
+                        <li>Preferencia familiar.</li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 4 -->
+                <article class="card">
+                    <h3><span class="card-number">4</span> Cinética Clínica</h3>
+                    <ul>
+                        <li><strong>Inicio lento:</strong> 2–4 semanas.</li>
+                        <li><strong>Vida media:</strong> 5 horas.</li>
+                        <li>Dosis: 1 a 2 al día.</li>
+                        <li><strong>No hace efecto inmediato.</strong></li>
+                    </ul>
+                </article>
+
+                <!-- Tarjeta 5 -->
+                <article class="card alert-card">
+                    <h3><span class="card-number">5</span> Alertas Clínicas</h3>
+                    <ul>
+                        <li>Ideación suicida.</li>
+                        <li>Hepatotoxicidad (rara).</li>
+                        <li>Alergias.</li>
+                        <li>Síntomas cardiovasculares.</li>
+                    </ul>
+                    <div class="highlight-box">Derivar ante cambios de humor.</div>
+                </article>
+
+                <!-- Tarjeta 6 -->
+                <article class="card">
+                    <h3><span class="card-number">6</span> Efectos Secundarios</h3>
+                    <ul>
+                        <li>Náuseas, bajo apetito.</li>
+                        <li>Somnolencia, fatiga inicial.</li>
+                        <li>Posible disfunción sexual.</li>
+                        <li>Irritabilidad.</li>
+                    </ul>
+                    <div class="highlight-box">Menos insomnio que los estimulantes.</div>
+                </article>
+
+                <!-- Tarjeta 7 -->
+                <article class="card">
+                    <h3><span class="card-number">7</span> Pautas de Psicoeducación</h3>
+                    <p><strong>"No es estimulante, tarda en hacer efecto. Hay que ser constante y no suspender de golpe."</strong></p>
+                    <ul style="margin-top:0.6rem;">
+                        <li>Monitorear ánimo y apetito.</li>
+                        <li>Ideal combinar con psicoterapia.</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>Desarmar mitos:</strong> "Es un estimulante" → <strong>No es un estimulante; actúa de forma diferente y tarda más en notarse.</strong>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="info-footer">
+        <p><strong>Aviso importante:</strong> Esta guía tiene fines exclusivamente educativos y de psicoeducación clínica.</p>
+        <p>La información aquí presentada no sustituye la consulta médica profesional. Toda decisión sobre diagnóstico, tratamiento o suspensión de medicación debe ser tomada junto con un profesional de la salud calificado.</p>
+    </footer>
+
+</body>
+</html>
