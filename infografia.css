@@ -1,0 +1,706 @@
+/* =====================================================================
+   INFOGRAFÍA MÉDICA · COMPONENTE REUTILIZABLE
+   Archivo   : infografia.css
+   Páginas   : haloperidol.html, sertralina.html
+   Alcance   : TODO está limitado a .infografia (y al body de la página
+               de demostración). No toca ningún otro elemento de tu web.
+   ---------------------------------------------------------------------
+   GUÍA RÁPIDA DE EDICIÓN
+     • Paleta de una ficha  .... variante .infografia--haloperidol
+                                o .infografia--sertralina
+     • Colores generales ....... bloque "1. TOKENS GLOBALES"
+     • Tipografías ............. --fuente-infografia
+     • Tamaños de texto ....... --escala-tipografica (multiplicador)
+     • Tamaño del círculo ...... --circulo-diametro
+     • Textos ................. haloperidol.html / sertralina.html
+   Para crear una ficha nueva: copia un HTML, cambia el modificador de
+   clase y, si quieres otros colores, copia una variante al final del CSS.
+   ===================================================================== */
+
+
+/* =====================================================================
+   0. PÁGINA DE DEMOSTRACIÓN (opcional)
+   Bórralo al integrar la sección en tu página existente.
+   ===================================================================== */
+body.pagina-demo {
+    margin: 0;
+    background-color: #f5f5f5;            /* fondo general de la referencia */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.pagina-demo__contenido {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(16px, 4vw, 48px) clamp(12px, 3vw, 32px);
+}
+
+.volver {
+    margin: 0 0 16px;
+    font-size: 0.9rem;
+}
+
+.volver a {
+    display: inline-block;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background-color: #ffffff;
+    border: 1px solid rgba(16, 82, 94, 0.18);
+    color: #10525e;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.volver a:hover,
+.volver a:focus {
+    background-color: #10525e;
+    color: #ffffff;
+}
+
+
+/* =====================================================================
+   1. TOKENS GLOBALS  ·  aquí se cambian colores, tipografía y tamaños
+   ===================================================================== */
+.infografia {
+    /* ---------- Tipografía ---------- */
+    --fuente-infografia: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    --peso-titulo: 800;
+    --peso-subtitulo: 700;
+    --peso-texto: 400;
+
+    /* Multiplicador global de tamaño de texto (súbelo/bájala para
+       agrandar o reducir TODA la infografía sin tocar cada regla). */
+    --escala-tipografica: 1;
+
+    /* ---------- Colores generales ---------- */
+    --fondo-general: #f5f5f5;            /* fondo de la página */
+    --marco-fondo: #ffffff;              /* tarjeta central */
+    --marco-borde: rgba(24, 32, 40, 0.07);
+    --texto-principal: #343a40;          /* gris oscuro */
+    --texto-secundario: #212529;         /* gris muy oscuro */
+    --texto-atenuado: #6b7280;           /* gris medio (fuentes de texto) */
+
+    /* ---------- CÍRCULO CENTRAL ---------- */
+    --circulo-diametro: clamp(190px, 21vw, 300px);   /* <-- TAMAÑO DEL CÍRCULO */
+    --circulo-fondo: #10525e;            /* azul petróleo */
+    --circulo-fondo-2: #0b3b46;          /* azul petróleo más oscuro */
+    --circulo-texto: #ffffff;
+    --circulo-anillo-externo: rgba(16, 82, 94, 0.28);
+    --circulo-anillo-interno: rgba(255, 255, 255, 0.22);
+    --circulo-sombra: 0 18px 40px rgba(11, 59, 70, 0.30);
+
+    /* ---------- CUADRÍCULA ---------- */
+    --columnas: 2;
+    --separacion: clamp(14px, 1.8vw, 24px);           /* gap entre bloques */
+    --altura-fila: 1fr;                               /* filas iguales => el círculo cae justo en el centro */
+    /* Espacio que el círculo invade sobre cada bloque, para que
+       NUNCA tape el texto (radio − mitad del gap + margen). */
+    --invasion-circulo: calc((var(--circulo-diametro) - var(--separacion)) / 2 + 6px);
+
+    /* ---------- Tarjeta / marco ---------- */
+    --marco-radio: 22px;
+    --marco-relleno: clamp(20px, 3vw, 38px);
+    --bloque-radio: 16px;
+    --bloque-relleno: clamp(16px, 1.8vw, 24px);
+
+    /* ---------- Sombras ---------- */
+    --sombra-sutil: 0 1px 2px rgba(16, 24, 32, 0.05), 0 4px 14px rgba(16, 24, 32, 0.06);
+    --sombra-hover: 0 10px 28px rgba(16, 24, 32, 0.14), 0 2px 6px rgba(16, 24, 32, 0.07);
+
+    /* ---------- Movimiento ---------- */
+    --movimiento: 0.28s;
+    --movimiento-entrada: 0.6s;
+
+    /* Layout y tipografía base del componente */
+    box-sizing: border-box;
+    font-family: var(--fuente-infografia);
+    color: var(--texto-principal);
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Variante "haloperidol" (azul petróleo). Si luego creas variantes para
+   otros medicamentos, copia este bloque y cambia solo los 4 colores. */
+.infografia--haloperidol {
+    --marco-borde: rgba(16, 82, 94, 0.14);
+    --texto-principal: #343a40;
+    --texto-secundario: #1c2b31;
+    --circulo-fondo: #10525e;
+    --circulo-fondo-2: #0b3b46;
+    --circulo-anillo-externo: rgba(16, 82, 94, 0.28);
+
+    /* Tintes de los cuatro bloques */
+    --bloque-1-fondo: #ece6f8;  --bloque-1-oscuro: #7b62b0;  --bloque-1-borde: #d9cff1;  --bloque-1-titulo: #5b448f;
+    --bloque-2-fondo: #dcf1ec;  --bloque-2-oscuro: #1d7a6b;  --bloque-2-borde: #bfe5db;  --bloque-2-titulo: #146254;
+    --bloque-3-fondo: #deeaf8;  --bloque-3-oscuro: #2b6398;  --bloque-3-borde: #c6dbf2;  --bloque-3-titulo: #1f4e7d;
+    --bloque-4-fondo: #fbe4e0;  --bloque-4-oscuro: #b2514b;  --bloque-4-borde: #f4d0cb;  --bloque-4-titulo: #933f3a;
+}
+
+/* Variante "sertralina" (verde azulado, familia ISRS) */
+.infografia--sertralina {
+    --marco-borde: rgba(15, 118, 110, 0.16);
+    --texto-principal: #343a40;
+    --texto-secundario: #12312c;
+    --circulo-fondo: #0f766e;
+    --circulo-fondo-2: #0a4f4a;
+    --circulo-anillo-externo: rgba(15, 118, 110, 0.30);
+    --circulo-anillo-interno: rgba(255, 255, 255, 0.26);
+    --circulo-sombra: 0 18px 40px rgba(10, 79, 74, 0.30);
+
+    --bloque-1-fondo: #e2f3ee;  --bloque-1-oscuro: #0f766e;  --bloque-1-borde: #c3e6dc;  --bloque-1-titulo: #0b5d52;
+    --bloque-2-fondo: #dceefb;  --bloque-2-oscuro: #1d6fa5;  --bloque-2-borde: #c2dff4;  --bloque-2-titulo: #145780;
+    --bloque-3-fondo: #e6edf9;  --bloque-3-oscuro: #3c5aa6;  --bloque-3-borde: #cfd9f2;  --bloque-3-titulo: #2c4480;
+    --bloque-4-fondo: #fdeae4;  --bloque-4-oscuro: #b2514b;  --bloque-4-borde: #f4d2c9;  --bloque-4-titulo: #8f3f39;
+}
+
+.infografia *,
+.infografia *::before,
+.infografia *::after {
+    box-sizing: border-box;
+}
+
+
+/* =====================================================================
+   2. TARJETA / MARCO CENTRAL
+   ===================================================================== */
+.infografia__marco {
+    background-color: var(--marco-fondo);
+    border: 1px solid var(--marco-borde);
+    border-radius: var(--marco-radio);
+    box-shadow: var(--sombra-sutil);
+    padding: var(--marco-relleno);
+}
+
+
+/* =====================================================================
+   3. ENCABEZADO  ·  HALOPERIDOL + ANTIPSICÓTICOS multicolor
+   ===================================================================== */
+.infografia__encabezado {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 22px);
+    padding-bottom: clamp(16px, 2.2vw, 26px);
+    margin-bottom: clamp(18px, 2.6vw, 34px);
+    border-bottom: 2px solid rgba(16, 82, 94, 0.12);
+    text-align: center;
+}
+
+.infografia__titulo {
+    margin: 0;
+    font-size: calc(clamp(1.9rem, 1.1rem + 3.2vw, 3.2rem) * var(--escala-tipografica));
+    font-weight: var(--peso-titulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--texto-secundario);
+    line-height: 1.05;
+}
+
+/* Clasificación: cada letra con su propia tonalidad */
+.infografia__categoria {
+    margin: 0;
+    font-size: calc(clamp(0.95rem, 0.6rem + 1.5vw, 1.7rem) * var(--escala-tipografica));
+    font-weight: var(--peso-titulo);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.categoria__letra {
+    display: inline-block;
+    transition: transform var(--movimiento) ease;
+}
+
+/* Paleta del título (se repite cada 4 letras) */
+.categoria__letra:nth-child(4n + 1) { color: #1f6f8b; }  /* azul acero   */
+.categoria__letra:nth-child(4n + 2) { color: #2f8f7f; }  /* verde petróleo */
+.categoria__letra:nth-child(4n + 3) { color: #4a6f9c; }  /* azul apagado  */
+.categoria__letra:nth-child(4n + 4) { color: #5c5a91; }  /* violeta       */
+
+.infografia__encabezado:hover .categoria__letra:nth-child(odd) {
+    transform: translateY(-2px);
+}
+
+/* Texto solo para lectores de pantalla */
+.solo-lectores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Fotografía ilustrativa del medicamento (banda ancha bajo el encabezado) */
+.infografia__foto {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--bloque-radio);
+    margin: 0 0 clamp(18px, 2.6vw, 30px);
+    box-shadow: var(--sombra-sutil);
+}
+
+
+/* =====================================================================
+   4. COLORES POR BLOQUE
+   Cambia --fondo / --fondo-oscuro / --borde / --titulo de cada uno.
+   ===================================================================== */
+.bloque {
+    /* valores por defecto (se sobrescriben más abajo) */
+    --fondo: #eae4f7;
+    --fondo-oscuro: #7b62b0;
+    --borde: #d8cef0;
+    --titulo: #5b448f;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: var(--bloque-relleno);
+    background-color: var(--fondo);
+    border: 1px solid var(--borde);
+    border-radius: var(--bloque-radio);
+    box-shadow: var(--sombra-sutil);
+    transition: transform var(--movimiento) ease, box-shadow var(--movimiento) ease;
+    animation: bloque-entrada var(--movimiento-entrada) ease backwards;
+}
+
+/* Los cuatro bloques toman sus colores de la variante de la ficha
+   (--bloque-1-* a --bloque-4-*), con el valor haloperidol como
+   respaldo por si se usa .infografia sin modificador. */
+
+/* 1) Datos generales */
+.bloque--datos {
+    --fondo: var(--bloque-1-fondo, #ece6f8);
+    --fondo-oscuro: var(--bloque-1-oscuro, #7b62b0);
+    --borde: var(--bloque-1-borde, #d9cff1);
+    --titulo: var(--bloque-1-titulo, #5b448f);
+    animation-delay: 0.05s;
+}
+
+/* 2) Mecanismo de acción */
+.bloque--mecanismo {
+    --fondo: var(--bloque-2-fondo, #dcf1ec);
+    --fondo-oscuro: var(--bloque-2-oscuro, #1d7a6b);
+    --borde: var(--bloque-2-borde, #bfe5db);
+    --titulo: var(--bloque-2-titulo, #146254);
+    animation-delay: 0.15s;
+}
+
+/* 3) Cinética clínica */
+.bloque--cinetica {
+    --fondo: var(--bloque-3-fondo, #deeaf8);
+    --fondo-oscuro: var(--bloque-3-oscuro, #2b6398);
+    --borde: var(--bloque-3-borde, #c6dbf2);
+    --titulo: var(--bloque-3-titulo, #1f4e7d);
+    animation-delay: 0.25s;
+}
+
+/* 4) Efectos secundarios */
+.bloque--efectos {
+    --fondo: var(--bloque-4-fondo, #fbe4e0);
+    --fondo-oscuro: var(--bloque-4-oscuro, #b2514b);
+    --borde: var(--bloque-4-borde, #f4d0cb);
+    --titulo: var(--bloque-4-titulo, #933f3a);
+    animation-delay: 0.35s;
+}
+
+/* Hover suave */
+@media (hover: hover) {
+    .bloque:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--sombra-hover);
+    }
+}
+
+
+/* =====================================================================
+   5. ETIQUETA LATERAL CONECTADA (píldora + flecha)
+   ===================================================================== */
+.bloque__etiqueta {
+    align-self: flex-start;                       /* se ajusta por posición */
+    position: relative;
+    margin: 0 0 2px;
+    padding: 5px 12px 6px;
+    background-color: var(--fondo-oscuro);
+    color: #ffffff;
+    font-size: calc(0.78rem * var(--escala-tipografica));
+    font-weight: var(--peso-subtitulo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(16, 24, 32, 0.14);
+    white-space: nowrap;
+}
+
+/* Flecha: cuadrado girado (::before) que apunta al contenido */
+.bloque__etiqueta::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--fondo-oscuro);
+    transform: rotate(45deg);
+    border-radius: 0 0 3px 0;
+}
+
+/* Línea curva decorativa que conecta la etiqueta con el texto (::after) */
+.bloque__etiqueta::after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    bottom: -9px;
+    width: 2px;
+    height: 6px;
+    background-image: linear-gradient(to bottom, var(--fondo-oscuro), transparent);
+    opacity: 0.55;
+}
+
+
+/* =====================================================================
+   6. TÍTULOS Y CUERPO DE CADA BLOQUE
+   ===================================================================== */
+.bloque__kicker {
+    margin: 4px 0 0;
+    font-size: calc(0.76rem * var(--escala-tipografica));
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--titulo);
+    opacity: 0.75;
+}
+
+.bloque__titulo {
+    margin: 0;
+    font-size: calc(clamp(1rem, 0.85rem + 0.5vw, 1.3rem) * var(--escala-tipografica));
+    font-weight: var(--peso-titulo);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--titulo);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--borde);
+}
+
+.bloque__titulo-nota {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.72em;
+    font-weight: var(--peso-subtitulo);
+    letter-spacing: 0.06em;
+    text-transform: none;
+    opacity: 0.8;
+}
+
+.bloque__cuerpo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.bloque__cuerpo p {
+    margin: 0;
+    font-size: calc(clamp(0.86rem, 0.82rem + 0.18vw, 1rem) * var(--escala-tipografica));
+    line-height: 1.55;
+    color: var(--texto-principal);
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+}
+
+.bloque__cuerpo sub {
+    font-size: 0.72em;
+    line-height: 0;
+}
+
+.bloque__cuerpo strong {
+    font-weight: 700;
+    color: var(--texto-secundario);
+}
+
+
+/* =====================================================================
+   7. CUADRÍCULA 2x2  +  CÍRCULO CENTRAL SUPERPUESTO
+   ===================================================================== */
+.infografia__cuadricula {
+    position: relative;                          /* ancla del círculo */
+    display: grid;
+    grid-template-columns: repeat(var(--columnas), minmax(0, 1fr));
+    grid-auto-rows: var(--altura-fila);          /* filas iguales */
+    gap: var(--separacion);
+    z-index: 1;
+}
+
+/* Reserva el espacio que invade el círculo en la esquina interior
+   de cada bloque, para que el texto nunca quede tapado. */
+.bloque--sup-izq { padding-right: var(--invasion-circulo); padding-bottom: var(--invasion-circulo); }
+.bloque--sup-der { padding-left: var(--invasion-circulo);  padding-bottom: var(--invasion-circulo); }
+.bloque--inf-izq { padding-right: var(--invasion-circulo); padding-top: var(--invasion-circulo); }
+.bloque--inf-der { padding-left: var(--invasion-circulo);  padding-top: var(--invasion-circulo); }
+
+/* Columna izquierda: etiqueta a la izquierda; columna derecha: a la derecha */
+.bloque--der .bloque__etiqueta {
+    align-self: flex-end;
+}
+.bloque--der .bloque__etiqueta::before {
+    left: auto;
+    right: 18px;
+}
+.bloque--der .bloque__etiqueta::after {
+    left: auto;
+    right: 22px;
+}
+
+/* Fila inferior: etiqueta abajo, con la flecha apuntando hacia arriba */
+.bloque--inf .bloque__etiqueta {
+    order: 3;
+    margin: 8px 0 0;
+}
+.bloque--inf .bloque__etiqueta::before {
+    bottom: auto;
+    top: -5px;
+}
+.bloque--inf .bloque__etiqueta::after {
+    bottom: auto;
+    top: -9px;
+    background-image: linear-gradient(to top, var(--fondo-oscuro), transparent);
+}
+
+
+/* ---------- El círculo ---------- */
+.circulo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--circulo-diametro);
+    height: var(--circulo-diametro);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--circulo-texto);
+    background:
+        radial-gradient(circle at 32% 28%, #1a6b78 0%, var(--circulo-fondo) 52%, var(--circulo-fondo-2) 100%);
+    border-radius: 50%;
+    box-shadow: var(--circulo-sombra);
+    /* Padding en calc() y no en %: en un elemento posicionado
+       el % se resolvería contra el ancho del contenedor, no el suyo. */
+    padding: calc(var(--circulo-diametro) * 0.14);
+    animation: circulo-entrada 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) backwards;
+}
+
+/* Anillo externo (punteado) */
+.circulo__anillo {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.circulo__anillo--externo {
+    inset: -11px;
+    border: 2px dashed var(--circulo-anillo-externo);
+    animation: anillo-giro 46s linear infinite;
+}
+
+/* Anillo interno */
+.circulo__anillo--interno {
+    inset: 11px;
+    border: 1.5px solid var(--circulo-anillo-interno);
+}
+
+.circulo__contenido {
+    position: relative;
+    z-index: 1;
+}
+
+.circulo__antetitulo {
+    margin: 0 0 6px;
+    font-size: calc(0.72rem * var(--escala-tipografica));
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #9fd9d2;
+}
+
+.circulo__texto {
+    margin: 0;
+    font-size: calc(clamp(0.56rem, 0.42rem + 0.38vw, 0.8rem) * var(--escala-tipografica));
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    color: var(--circulo-texto);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =====================================================================
+   8. ANIMACIONES (sutiles)
+   ===================================================================== */
+@keyframes bloque-entrada {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes circulo-entrada {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.82);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes anillo-giro {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+
+/* =====================================================================
+   9. RESPONSIVE
+   ===================================================================== */
+
+/* TABLET: misma cuadrícula 2x2, todo más compacto */
+@media (max-width: 1024px) {
+    .infografia {
+        --circulo-diametro: clamp(170px, 22vw, 250px);
+        --bloque-relleno: 16px;
+    }
+
+    .bloque__etiqueta {
+        padding: 4px 10px 5px;
+        font-size: calc(0.74rem * var(--escala-tipografica));
+    }
+}
+
+/* MÓVIL: una sola columna, el círculo deja de superponerse */
+@media (max-width: 820px) {
+    .infografia {
+        --columnas: 1;
+        --circulo-diametro: min(74vw, 300px);
+        --altura-fila: auto;
+    }
+
+    .infografia__marco {
+        padding: clamp(18px, 5vw, 26px);
+    }
+
+    .infografia__encabezado {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+    }
+
+    /* El círculo pasa a ocupar su propia fila, arriba.
+       OJO: los @keyframes son globales; se declara una animación
+       nueva para no pisar la de escritorio. */
+    .circulo {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin: 4px auto 8px;
+        padding: calc(var(--circulo-diametro) * 0.14);
+        animation-name: circulo-entrada-fila;
+    }
+
+    @keyframes circulo-entrada-fila {
+        from { opacity: 0; transform: scale(0.85); }
+        to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Etiquetas siempre arriba del bloque, alineadas a la izquierda */
+    .bloque .bloque__etiqueta,
+    .bloque--der .bloque__etiqueta {
+        align-self: flex-start;
+        order: 0;
+        margin: 0 0 2px;
+    }
+
+    .bloque .bloque__etiqueta::before,
+    .bloque--der .bloque__etiqueta::before,
+    .bloque--inf .bloque__etiqueta::before {
+        left: 18px;
+        right: auto;
+        top: auto;
+        bottom: -5px;
+    }
+
+    .bloque .bloque__etiqueta::after,
+    .bloque--der .bloque__etiqueta::after,
+    .bloque--inf .bloque__etiqueta::after {
+        left: 22px;
+        right: auto;
+        top: auto;
+        bottom: -9px;
+        height: 6px;
+        background-image: linear-gradient(to bottom, var(--fondo-oscuro), transparent);
+    }
+
+    /* Se anula el espacio reservado para el círculo */
+    .bloque--sup-izq,
+    .bloque--sup-der,
+    .bloque--inf-izq,
+    .bloque--inf-der {
+        padding: var(--bloque-relleno);
+    }
+}
+
+/* MÓVIL PEQUEÑO */
+@media (max-width: 420px) {
+    .infografia {
+        --circulo-diametro: min(80vw, 260px);
+        --bloque-relleno: 14px;
+    }
+
+    .circulo__texto {
+        font-size: calc(clamp(0.66rem, 2.4vw, 0.8rem) * var(--escala-tipografica));
+    }
+
+    .bloque__cuerpo p {
+        font-size: 0.86rem;
+    }
+}
+
+
+/* =====================================================================
+   10. ACCESIBILIDAD · movimiento reducido
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .bloque,
+    .circulo,
+    .circulo__anillo--externo,
+    .categoria__letra {
+        animation: none;
+        transition: none;
+    }
+}

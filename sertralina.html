@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertralina — Infografía educativa</title>
+
+    <!-- =========================================================
+         CSS COMPARTIDO del componente infografía.
+         Sirve para haloperidol.html y sertralina.html.
+         ========================================================= -->
+    <link rel="stylesheet" href="infografia.css">
+</head>
+
+<!-- La clase "pagina-demo" solo pinta el fondo de la página de prueba.
+     Bórrala al integrar la sección en tu web. -->
+<body class="pagina-demo">
+
+<main class="pagina-demo__contenido">
+
+    <!-- Enlace de vuelta a la guía principal -->
+    <p class="volver"><a href="index.html">&larr; Volver al Vademécum de Psicofarmacología</a></p>
+
+    <!-- =============================================================
+         ===== INICIO DE LA SECCIÓN SERTRALINA =======================
+         Copia este bloque completo (desde <section> hasta </section>)
+         dentro del <main> de tu página.
+         ============================================================= -->
+    <section class="infografia infografia--sertralina" aria-labelledby="sertralina-titulo">
+
+        <!-- Tarjeta / contenedor central de fondo claro -->
+        <div class="infografia__marco">
+
+            <!-- ===================== ENCABEZADO ===================== -->
+            <header class="infografia__encabezado">
+                <h1 class="infografia__titulo" id="sertralina-titulo">Sertralina</h1>
+
+                <!-- Clasificación: una tonalidad por letra -->
+                <p class="infografia__categoria">
+                    <span class="solo-lectores">Clasificación: antidepresivos. </span>
+                    <span class="categoria__letra" aria-hidden="true">A</span><span class="categoria__letra" aria-hidden="true">N</span><span class="categoria__letra" aria-hidden="true">T</span><span class="categoria__letra" aria-hidden="true">I</span><span class="categoria__letra" aria-hidden="true">D</span><span class="categoria__letra" aria-hidden="true">E</span><span class="categoria__letra" aria-hidden="true">P</span><span class="categoria__letra" aria-hidden="true">R</span><span class="categoria__letra" aria-hidden="true">E</span><span class="categoria__letra" aria-hidden="true">S</span><span class="categoria__letra" aria-hidden="true">O</span><span class="categoria__letra" aria-hidden="true">I</span><span class="categoria__letra" aria-hidden="true">V</span><span class="categoria__letra" aria-hidden="true">O</span><span class="categoria__letra" aria-hidden="true">S</span>
+                </p>
+            </header>
+            <!-- =================== FIN ENCABEZADO ==================== -->
+
+            <img class="infografia__foto" src="sertralina.png" alt="Foto ilustrativa de Sertralina" loading="lazy">
+
+            <!-- ============ COMPOSICIÓN 2x2 + CÍRCULO ============ -->
+            <div class="infografia__cuadricula">
+
+                <!-- ---------- CÍRCULO CENTRAL ---------- -->
+                <div class="circulo" role="group" aria-label="Indicaciones principales de la sertralina">
+                    <span class="circulo__anillo circulo__anillo--externo" aria-hidden="true"></span>
+                    <span class="circulo__anillo circulo__anillo--interno" aria-hidden="true"></span>
+                    <div class="circulo__contenido">
+                        <p class="circulo__antetitulo">Para:</p>
+                        <p class="circulo__texto">
+                            Depresión mayor,<br>
+                            trastorno de ansiedad generalizada, trastorno de pánico, trastorno obsesivo compulsivo (TOC) y TEPT
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ---------- BLOQUE 1: DATOS GENERALES ---------- -->
+                <article class="bloque bloque--datos bloque--sup-izq">
+                    <p class="bloque__etiqueta">Datos generales</p>
+                    <p class="bloque__kicker">Farmacología básica</p>
+                    <h2 class="bloque__titulo">Datos generales</h2>
+                    <div class="bloque__cuerpo">
+                        <p>Antidepresivo de primera línea, clase ISRS (inhibidor selectivo de la recaptación de serotonina). También se usa como coadyuvante en el trastorno de ansiedad generalizada y en el TDAH.</p>
+                        <p><strong>Presentación en Bolivia:</strong> comprimidos de 25, 50 y 100 mg, comercializados principalmente como sertralina genérica; los nombres comerciales disponibles deben consultarse en el Vademécum Nacional vigente.</p>
+                    </div>
+                </article>
+
+                <!-- ---------- BLOQUE 2: MECANISMO DE ACCIÓN ---------- -->
+                <article class="bloque bloque--mecanismo bloque--sup-der bloque--der">
+                    <p class="bloque__etiqueta">Mecanismo de acción</p>
+                    <p class="bloque__kicker">Farmacodinamia</p>
+                    <h2 class="bloque__titulo">Mecanismo de acción</h2>
+                    <div class="bloque__cuerpo">
+                        <p>Bloquea el transportador de serotonina (SERT) e impide la recaptación del neurotransmisor en la hendidura sináptica, aumentando su disponibilidad y la transmisión serotoninérgica.</p>
+                        <p>Al carecer de acción adrenérgica apreciable, genera menos sedación y menos activación que otros antidepresivos, lo que mejora la adherencia en uso prolongado.</p>
+                    </div>
+                </article>
+
+                <!-- ---------- BLOQUE 3: CINÉTICA CLÍNICA ---------- -->
+                <article class="bloque bloque--cinetica bloque--inf-izq bloque--inf">
+                    <p class="bloque__etiqueta">Cinética clínica</p>
+                    <p class="bloque__kicker">Farmacocinética</p>
+                    <h2 class="bloque__titulo">Cinética clínica</h2>
+                    <div class="bloque__cuerpo">
+                        <p><strong>Latencia:</strong> 2 a 4 semanas para el efecto antidepresivo; efecto completo entre las 6 y 8 semanas.</p>
+                        <p><strong>Vida media:</strong> unas 26 horas, lo que permite una sola dosis diaria. Se metaboliza en el hígado y su vida media se prolonga en la insuficiencia hepática, por lo que se ajusta la dosis.</p>
+                    </div>
+                </article>
+
+                <!-- ---------- BLOQUE 4: EFECTOS SECUNDARIOS ---------- -->
+                <article class="bloque bloque--efectos bloque--inf-der bloque--inf bloque--der">
+                    <p class="bloque__etiqueta">Efectos secundarios</p>
+                    <p class="bloque__kicker">Seguridad y adherencia</p>
+                    <h2 class="bloque__titulo">Efectos secundarios <span class="bloque__titulo-nota">(impacto/congn.)</span></h2>
+                    <div class="bloque__cuerpo">
+                        <p>Náuseas, cefalea e insomnio o somnolencia en las primeras semanas; estreñimiento y boca seca. Impacta de forma directa en la autoestima y en la adherencia, porque el efecto se percibe tras varias semanas.</p>
+                        <p>Disfunción sexual y sudoración. El síndrome serotoninérgico aparece al combinarlo con otros fármacos serotoninérgicos y está contraindicado con IMAO.</p>
+                    </div>
+                </article>
+
+            </div>
+            <!-- ========== FIN COMPOSICIÓN 2x2 + CÍRCULO ============ -->
+
+        </div>
+        <!-- Fin tarjeta central -->
+    </section>
+    <!-- =============================================================
+         ===== FIN DE LA SECCIÓN SERTRALINA ========================
+         ============================================================= -->
+
+</main>
+
+</body>
+</html>
